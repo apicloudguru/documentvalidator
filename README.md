@@ -9,7 +9,7 @@ This is an Apigee Proxy that implements a simple document validation solution.
 To deploy this you will need access to an Apigee Edge instance. You can register for a free developer account
 at https://apigee.com/api-management/#/homepage.
 
-1. Download the [DocumentValidator.zip file](../blob/master/Stripe-Documents-RFP_rev9_2018_12_14.zip)
+1. Download the [DocumentValidator.zip file](/blob/master/Stripe-Documents-RFP_rev9_2018_12_14.zip)
 2. Login to your Apigee instance
 3. Click the **Develop** icon on the left bar menu (first icon beneath your account name)
 4. Click **API Proxies**
