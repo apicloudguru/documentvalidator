@@ -4,12 +4,18 @@
 
 This is an Apigee Proxy that implements a simple document validation solution.
 
+Note that you do not need to deploy this in order to test the functioanlity. You can run calls against this using
+
+http://amer-demo27-test.apigee.net/validator/documemts
+
+Run POST calls to this URL with various "Wonka Visitor" JSON documents
+
 ## Deploying to Apigee
 
 To deploy this you will need access to an Apigee Edge instance. You can register for a free developer account
 at https://apigee.com/api-management/#/homepage.
 
-1. Download the [DocumentValidator.zip file](/blob/master/documentvalidator_rev1_2018_12_14.zip)
+1. Download the [DocumentValidator.zip](/blob/master/documentvalidator_rev1_2018_12_14.zip) file
 2. Login to your Apigee instance
 3. Click the **Develop** icon on the left bar menu (first icon beneath your account name)
 4. Click **API Proxies**
@@ -26,5 +32,9 @@ at https://apigee.com/api-management/#/homepage.
 
 ## Testing Using Postman
 
-Need info here....
+You can use the Postman collection to set up testing the validator APIs. 
+
+Install and open Postmamn, then import the collection [DocumentValidatorCollection.json](/blob/master/DocumentValidator.json)
+
+You can now run the tests againat the endpoint above. If you want to run against your own deployment in Apigee modify the environment variable for basePath to the appropriate path.
 
