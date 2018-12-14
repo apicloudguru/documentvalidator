@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "8890d56f-d805-4ff8-9e0a-e828b742fed3",
+		"name": "Stripe Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Happy Path  - Violet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\" : \"Violet\",\n\t\"last_name\" : \"Beauregarde\",\n\t\"id\" : \"12345\",\n\t\"tax_id\" : \"111-22-3333\",\n\t\"address\" : {\n\t\t\"street\" : \"111 W Third\",\n\t\t\"city\" : \"Chicago\",\n\t\t\"state\" : \"IL\",\n\t\t\"postal_code\" : \"60619\",\n\t\t\"country\" : \"US\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Happy Path - Charlie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\" : \"Charlie\",\n\t\"last_name\" : \"Bucket\",\n\t\"id\" : \"a9b12c32\",\n\t\"tax_id\" : \"444556666\",\n\t\"address\" : {\n\t\t\"street\" : \"8 Ings Lane\",\n\t\t\"city\" : \"Daylesford\",\n\t\t\"postal_code\" : \"GL56 7WU\",\n\t\t\"country\" : \"GB\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unhappy Path - Empty JSON",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unhappy Path - Empty first_name, other issues",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"\",\n\t\"last_name\" : 123,\n\t\"id\" : true,\n\t\"tax_id\": 123456789,\n\t\"address\": {\n\t\t\"country\": \"XXXX\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unhappy Path - last_name is an array, other issues",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"Augustus\",\n\t\"last_name\" : [\"Gloop\"],\n\t\"id\" : \"\",\n\t\"tax_id\": \"12-34-5678\",\n\t\"address\": {\n\t\t\"country\": \"CA\",\n\t\t\"street\" : \"345 S Arden\",\n\t\t\"city\" : \"Edmonton\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unhappy Path (additional test case) - includes state when not CA or US",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\" : \"Mike\",\n\t\"last_name\" : \"Teevee\",\n\t\"id\" : \"ssc223123df 43\",\n\t\"tax_id\" : \"111-22-3333\",\n\t\"address\" : {\n\t\t\"street\" : \"111 W Third\",\n\t\t\"city\" : \"Innsbruck\",\n\t\t\"state\" : \"AT\",\n\t\t\"postal_code\" : \"6020 \",\n\t\t\"country\" : \"AT\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unhappy Path (additional test case)- postal_code not at least 5 characters",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\" : \"Mike\",\n\t\"last_name\" : \"Teevee\",\n\t\"id\" : \"ssc223123df 43\",\n\t\"tax_id\" : \"111-22-3333\",\n\t\"address\" : {\n\t\t\"street\" : \"111 W Third\",\n\t\t\"city\" : \"Innsbruck\",\n\t\t\"postal_code\" : \"6020\",\n\t\t\"country\" : \"AT\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unhappy Path (additional test case) - tax_id contains invalid characters between sections",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\" : \"Violet\",\n\t\"last_name\" : \"Beauregarde\",\n\t\"id\" : \"12345\",\n\t\"tax_id\" : \"111*22*3333\",\n\t\"address\" : {\n\t\t\"street\" : \"111 W Third\",\n\t\t\"city\" : \"Chicago\",\n\t\t\"state\" : \"IL\",\n\t\t\"postal_code\" : \"60619\",\n\t\t\"country\" : \"US\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PastDue Test Time 0s",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"0\"}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PastDue Test Time 20s",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13f23a6a-fc64-4f71-875f-8b6949a4f1fa",
+						"exec": [
+							"setTimeout(function(){}, [2000]);",
+							"postman.setNextRequest(\"PastDue Test Time 20s\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"0\",\n\t\"first_name\" : \"Veruca\",\n\t\"last_name\" : \"Salt\"\n}"
+				},
+				"url": {
+					"raw": "{{basePath}}/documents",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
