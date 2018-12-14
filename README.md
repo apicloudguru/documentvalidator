@@ -38,3 +38,6 @@ Install and open Postmamn, then import the collection [DocumentValidatorCollecti
 
 You can now run the tests againat the endpoint above. If you want to run against your own deployment in Apigee modify the environment variable for basePath to the appropriate path.
 
+## Viewing Doc Validation Logic
+
+If you want to see the logic used for validating the document, you can look [validate-document.js] (/blob/master/validate-document.js). Note that this won't work unless deployed to Apigee as part of the proxy. But it should givve you a good idea of how the validation logic was implemented.
